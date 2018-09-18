@@ -3,6 +3,11 @@
     <el-header>
       <div class="logo" :style="'width:'+asideWidth">logo</div>
       <i class="iconfont  icon-caidan hideAside" @click='hideAside'></i>
+      <div class="breadcrump">
+        <el-breadcrumb separator-class="el-icon-arrow-right">
+          <el-breadcrumb-item v-for="(item,index) in breadcrumpData" :key="index" :to="{ path: item.path }">{{item.name}}</el-breadcrumb-item>
+        </el-breadcrumb>
+      </div>
       <div class="userInfo">
         <div class="userName">您好，{{userName}}</div>
         <div class="loginOut" @click="loginOut">退出</div>
@@ -15,9 +20,7 @@
       <el-main>
         <div class="main-container">
           <transition mode="out-in" enter-active-class="animated zoomIn">
-            <keep-alive>
-              <router-view />
-            </keep-alive>
+            <router-view />
           </transition>
         </div>
       </el-main>
@@ -35,6 +38,7 @@ export default {
   },
   data() {
     return {
+      breadcrumpData: [],
       userName: ''
     };
   },
@@ -52,6 +56,15 @@ export default {
     ...mapActions([
       'hideAside'
     ]),
+    breadcrump() {
+      this.breadcrumpData = [];
+      this.$route.matched.map((val) => {
+        this.breadcrumpData.push({
+          name: val.name,
+          path: val.path
+        });
+      });
+    },
     loginOut() {
       this.$confirm('确认退出吗?', '提示', {
         confirmButtonText: '确定',
@@ -69,6 +82,13 @@ export default {
     ...mapGetters([
       'asideWidth'
     ])
+  },
+  watch: {
+    $route: {
+      deep: true,
+      handler: 'breadcrump',
+      immediate: true
+    }
   }
 };
 </script>
@@ -87,7 +107,7 @@ export default {
   }
   .el-aside {
     background: #294254;
-    transition: width ease 0.3s;
+    transition: width ease 0.1s;
   }
   .el-main {
     position: relative;
@@ -98,7 +118,7 @@ export default {
     height: 60px;
     line-height: 60px;
     background: rgb(54, 61, 66);
-    transition: width ease 0.3s;
+    transition: width ease 0.1s;
   }
   .hideAside {
     cursor: pointer;
@@ -135,5 +155,10 @@ export default {
   .loginOut {
     width: 60px;
     cursor: pointer;
+  }
+  .breadcrump {
+    display: inline-block;
+    margin: 0 10px;
+    padding: 0 5px;
   }
 </style>

@@ -21,11 +21,15 @@
                 <span>测试</span>
               </template>
               <el-menu-item-group>
-                <el-menu-item index="/index/">测试1</el-menu-item>
+                <el-menu-item index="/index/dashboard">测试1</el-menu-item>
                 <el-menu-item index="/index/">测试2</el-menu-item>
                 <el-menu-item index="/index/">测试3</el-menu-item>
               </el-menu-item-group>
             </el-submenu>
+            <el-menu-item index="/index/mycontrol">
+              <i class="el-icon-menu"></i>
+              <span slot="title">我的监控</span>
+            </el-menu-item>
           </el-menu>
         </el-col>
       </el-row>

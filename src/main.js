@@ -31,7 +31,9 @@ import {
   Loading,
   Message,
   MessageBox,
-  Card
+  Card,
+  Breadcrumb,
+  BreadcrumbItem
 } from 'element-ui';
 import './assets/common/css/common.css';
 import './assets/common/css/animate.css';
@@ -68,6 +70,8 @@ Vue.use(TableColumn);
 Vue.use(Pagination);
 Vue.use(Loading);
 Vue.use(Card);
+Vue.use(Breadcrumb);
+Vue.use(BreadcrumbItem);
 
 Vue.config.productionTip = false;
 

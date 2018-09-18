@@ -5,6 +5,7 @@ import Lock from '@/components/lock/Lock';
 import Login from '@/components/login/';
 
 import IndexDashboard from '@/components/index/Dashboard/';
+import MyControl from '@/components/index/MyControl/';
 
 Vue.use(Router);
 
@@ -16,13 +17,18 @@ export default new Router({
   },
   {
     path: '/index',
-    name: 'index',
+    name: '首页',
     redirect: '/index/dashboard',
     component: Index,
     children: [{
       path: '/index/dashboard',
-      name: '首页',
+      name: 'Dashboard',
       component: IndexDashboard,
+      meta: { getName: false }
+    }, {
+      path: '/index/mycontrol',
+      name: '我的监控',
+      component: MyControl,
       meta: { getName: false }
     }]
   },

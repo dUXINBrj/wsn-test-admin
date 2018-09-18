@@ -14,12 +14,6 @@ html {
   font-family: "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
 }
 
-.el-icon-arrow-right,
-.el-icon-arrow-left {
-  color: #fff;
-  font-size: 20px;
-}
-
 .el-pagination {
   text-align: center;
 }
@@ -37,4 +31,12 @@ html {
 
 .card-top>span {
   color: #666;
+}
+
+.el-breadcrumb__inner a, .el-breadcrumb__inner.is-link {
+  color: #fff;
+}
+
+.el-breadcrumb__item:last-child .el-breadcrumb__inner, .el-breadcrumb__item:last-child .el-breadcrumb__inner a, .el-breadcrumb__item:last-child .el-breadcrumb__inner a:hover, .el-breadcrumb__item:last-child .el-breadcrumb__inner:hover {
+  color: #d6d6d6;
 }
